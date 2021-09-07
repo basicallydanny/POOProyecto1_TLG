@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "vector": "cpp",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "functional": "cpp"
     }
 }

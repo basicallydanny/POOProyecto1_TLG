@@ -12,7 +12,8 @@ using std::string;
 class Personal
 {
 private:
- string nombre, cargo;
+ string nombre;
+ string cargo;
 public:
 
 };

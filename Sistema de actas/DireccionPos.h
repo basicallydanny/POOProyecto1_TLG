@@ -24,7 +24,6 @@ private:
     void mostrarMenuDirector();
     void mostrarMenuJurado();
 public:
-
 };
 
 
