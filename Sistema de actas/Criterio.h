@@ -14,7 +14,7 @@ class Criterio
 {
 private:
     string titulo, observacion;
-    float ponderado, califiacion;
+    float ponderado, calificacion;
 public:
 
 };
