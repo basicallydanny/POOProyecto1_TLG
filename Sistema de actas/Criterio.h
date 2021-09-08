@@ -13,10 +13,21 @@ using std::string;
 class Criterio
 {
 private:
-    string titulo, observacion;
-    float ponderado, califiacion;
+    string titulo;
+    string observacion;
+    float ponderado;
+    float califiacion;
 public:
-
+    Criterio();
+    Criterio(string titulo, string observacion, float ponderado, float calificacion);
+    void setTitulo(string titulo);
+    string getTitulo();
+    void setObservacion(string observacion);
+    string getObservacion();
+    void setPonderado(float ponderado);
+    float getPonderado();
+    void setCalificacion(float calificacion);
+    float getCalificacion();
 };
 
  

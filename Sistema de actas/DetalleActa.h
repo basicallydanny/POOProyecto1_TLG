@@ -17,9 +17,14 @@ class DetalleActa
 {
 private:
     float calificacionFinal;
-    string ObservacionesAdicionales;
+    string observacionesAdicionales;
     vector<Criterio>listaCriterios;
 public:
+    DetalleActa();
+    float obtenerCalificacionFinal();
+    float getCalificacionFinal();
+    string getObservacionesAdicionales();
+    void setObservacionesAdicionales(string obersavion);
 
 };
 
