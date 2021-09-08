@@ -15,7 +15,10 @@ private:
  string nombre;
  string cargo;
 public:
-
+    void setNombre(string nombre);
+    string getNombre();
+    void setCargo(string cargo);
+    string getCargo();
 };
 
 

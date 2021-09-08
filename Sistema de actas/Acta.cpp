@@ -23,12 +23,10 @@ Acta::Acta(string fecha, string numeroActa, string nombreEstudiante, string nomb
         this->juradoUno = juradoUno;
         this->juradoDos = juradoDos;
     }
-string Acta::getNumeroActa()
-{
+string Acta::getNumeroActa(){
     return this-> numeroActa;
 }
-void Acta::setNumeroActa(string numeroActa)
-{
+void Acta::setNumeroActa(string numeroActa){
     this->numeroActa = numeroActa;
 }
 string Acta::getFecha(){
