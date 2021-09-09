@@ -23,7 +23,9 @@ private:
     void mostrarMenuAsistente();
     void mostrarMenuDirector();
     void mostrarMenuJurado();
+
 public:
+    void crearActa();
 };
 
 
