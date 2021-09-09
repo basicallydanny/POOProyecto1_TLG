@@ -19,13 +19,19 @@ private:
     float calificacionFinal;
     string observacionesAdicionales;
     vector<Criterio>listaCriterios;
+    int numCriterios;
 public:
+//constructor
     DetalleActa();
-    float obtenerCalificacionFinal();
+//gets y sets
+    void setCalificacionFinal(float calificacionFinal);
     float getCalificacionFinal();
-    string getObservacionesAdicionales();
-    void setObservacionesAdicionales(string obersavion);
+    string getObsAdicionales();
+    void setObsAdicionales(string observasion);
 
+    void addCriterio(string titulo, string observacion, float ponderado, float calificacion);
+    void delCriterio(string titulo);
+    vector<Criterio> getCriterios();
 };
 
 
