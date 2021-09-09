@@ -47,6 +47,7 @@ public:
     void setJuradoUno(string juradoUno);
     string getJuradoDos();
     void setJuradoDos(string juradoDOs);
+    void mostrarActa();
 };
 
 

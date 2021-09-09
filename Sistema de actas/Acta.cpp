@@ -1,7 +1,7 @@
 #include "Acta.h"
 
 Acta::Acta(){
-
+    this->codirector ="N/A";
 }
 Acta::Acta(string fecha, string numeroActa, string nombreEstudiante, string nombreTrabajo,
     string tipoTrabajo, string nombreDirector, string coNombreDirector, string juradoUno,
@@ -12,14 +12,7 @@ Acta::Acta(string fecha, string numeroActa, string nombreEstudiante, string nomb
         this->nombreTrabajo = nombreTrabajo;
         this->tipoTrabajo = tipoTrabajo;
         this->director = nombreDirector;
-        if (coNombreDirector != "")
-        {
-            this->codirector = coNombreDirector;
-        }
-        else
-        {
-            this->codirector = "N/A";
-        }
+        this->codirector = coNombreDirector;
         this->juradoUno = juradoUno;
         this->juradoDos = juradoDos;
     }
@@ -76,4 +69,14 @@ string Acta::getJuradoDos(){
 }
 void Acta::setJuradoDos(string juradoDOs){
     this->juradoDos=juradoDos;
+}
+void Acta::mostrarActa(){
+    cout << "Acta Numero: " << this->numeroActa <<"\n";
+    cout << "Director: " << this->director <<"\n";
+    cout << "Co Director: " << this->codirector <<"\n";
+    cout << "Jurado 1: " << this->juradoUno <<"\n";
+    cout << "Jurado 2: " << this->juradoDos <<"\n";
+    cout << "Nombre del estudiante: " << this->nombreAutor <<"\n";
+    cout << "Nombre del trabajo: " << this->nombreTrabajo <<"\n";
+    cout << "Fecha: " << this->fecha <<"\n";
 }
