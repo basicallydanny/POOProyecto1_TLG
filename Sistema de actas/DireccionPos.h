@@ -20,10 +20,11 @@ class DireccionPos
 private:
     int contActas;
     vector<Acta>listaActas;
+public:
     void mostrarMenuAsistente();
     void mostrarMenuDirector();
     void mostrarMenuJurado();
-public:
+    void mostrarCriterios();
 };
 
 
