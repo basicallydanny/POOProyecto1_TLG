@@ -15,18 +15,21 @@ private:
     string titulo;
     string observacion;
     float ponderado;
-    float califiacion;
+    float calificacionUno;
+    float calificacionDos;
 public:
     Criterio();
-    Criterio(string titulo, string observacion, float ponderado, float calificacion);
+    Criterio(string titulo, string observacion, float ponderado, float calificacionUno, float calificacionDos);
     void setTitulo(string titulo);
     string getTitulo();
     void setObservacion(string observacion);
     string getObservacion();
     void setPonderado(float ponderado);
     float getPonderado();
-    void setCalificacion(float calificacion);
-    float getCalificacion();
+    void setCalificacionUno(float calificacionUno);
+    float getCalificacionUno();
+    void setCalificacionDos(float calificacionDos);
+    float getCalificacionDos();
 };
 
  

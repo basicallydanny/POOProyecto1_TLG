@@ -76,10 +76,15 @@ void Acta::setJuradoUno(string juradoUno){
 string Acta::getJuradoDos(){
     return this->juradoDos;
 }
-void Acta::setJuradoDos(string juradoDOs){
+void Acta::setJuradoDos(string juradoDos){
     this->juradoDos=juradoDos;
 }
-
+string Acta::getEstado(){
+    return this->estado;
+}
+void Acta::setEstado(string estado){
+    this->estado=estado;
+}
 void Acta::mostrarActa(){
     cout << "Acta Numero: " << this->numeroActa <<"\n";
     cout << "Director: " << this->director <<"\n";

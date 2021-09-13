@@ -19,8 +19,8 @@ string DetalleActa::getObsAdicionales(){
 
 //metodos
 
-void DetalleActa::addCriterio(string titulo, string observacion, float ponderado, float calificacion){
-    Criterio crit( titulo, observacion, ponderado, calificacion );
+void DetalleActa::addCriterio(string titulo, string observacion, float ponderado, float calificacionUno, float calificacionDos){
+    Criterio crit( titulo, observacion, ponderado, calificacionUno, calificacionDos );
     listaCriterios.push_back( crit );
     this->numCriterios++;
 }
