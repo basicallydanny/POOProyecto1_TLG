@@ -21,7 +21,11 @@ private:
     int numCriterios;
 public:
 //constructor
-    DetalleActa();
+    DetalleActa(){
+        this->calificacionFinal = 0.0;
+        this->observacionesAdicionales = "";
+        this->numCriterios = 0;
+    }
 //gets y sets
     void setCalificacionFinal(float calificacionFinal);
     float getCalificacionFinal();
