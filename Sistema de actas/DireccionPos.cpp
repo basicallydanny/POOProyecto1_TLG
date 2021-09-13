@@ -39,21 +39,23 @@ void DireccionPos::loginUsuario(string user){
 void DireccionPos::mostrarMenuAsistente(){
      int opc;
      do{
-         cout << "\n\n MENU ASISTENTE \n"
-         << "1. Crear Acta\n"
-         << "2. Ver Actas\n"
-         << "o. EXIT\n"
-         << "OPC:";
-         cin >> opc; cout << "\n ";
-         switch(opc){
-              case 1:
-               ; break;
-              case 2:
-               ; break;
-              case 0: 
-               break;
-         }
-     } while (opc != 0);
+        cout << "MENU ASISTENTE\n"
+        << "1. Crear Acta\n"
+        << "2. Ver Actas\n"
+        << "0. EXIT\n"
+        << "OPC:";
+        cin >> opc; cout << "\n";
+        switch(opc){
+            case 1:
+                crearActa();
+                break;
+            case 2:
+                VerActas();
+                break;
+            case 0: 
+                break;
+        }
+    } while (opc != 0);
 }
 
 void DireccionPos::mostrarMenuJurado(){
@@ -117,9 +119,11 @@ void DireccionPos::crearActa(){
     cin >> nombreEstudiante;
     cout << "Ingrese el tipo de trabajo: ";
     cin >> tipoTrabajo;
+    cout << "Ingrese el nombre del trabajo: ";
+    cin >> nombreTrabajo;
     cout << "Ingrese el director: ";
     cin >> nombreDirector;
-    cout << "¿Existe co-director?\n1. No\n2. Si";
+    cout << "¿Existe co-director?\n1. No\n2. Si\n";
     cin >> ExisteCoDirector;
     if (ExisteCoDirector == 1){
         coNombreDirector = "N/A";
@@ -135,7 +139,7 @@ void DireccionPos::crearActa(){
     cout << "Acta creada, se muestra su informacion\n";
     Acta actaP(fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos);
     actaP.mostrarActa();
-     cout << "¿Desea guardar el acta?\n1. No\n2. Si";
+     cout << "¿Desea guardar el acta?\n1. No\n2. Si\n";
     cin >> opc;
     if (opc == 1){
         return;
@@ -144,4 +148,14 @@ void DireccionPos::crearActa(){
         listaActas.push_back(actaP);
         cout << "Acta creada y guardada\n";
     }
+}
+
+void DireccionPos::VerActas(){
+    
+    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++)
+    {
+        pActas->mostrarActa();
+        cout << "\n";
+    }
+    
 }

@@ -30,6 +30,7 @@ public:
     void mostrarActa();
     void crearActa();
     void modificarActa();
+    void VerActas();
 };
 
 #endif

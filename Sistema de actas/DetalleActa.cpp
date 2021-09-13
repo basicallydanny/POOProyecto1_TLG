@@ -26,14 +26,14 @@ void DetalleActa::addCriterio(string titulo, string observacion, float ponderado
 }
 
 void DetalleActa::delCriterio(string titulo){
-    auto iterador = listaCriterios.begin();
-    while(iterador != listaCriterios.end()){
-        if(iterador->getTitulo() == titulo){
-            iterador = listaCriterios.erase( iterador );
+    vector<Criterio>::iterator pCriterios = listaCriterios.begin();
+    while(pCriterios != listaCriterios.end()){
+        if(pCriterios->getTitulo() == titulo){
+            pCriterios = listaCriterios.erase( pCriterios );
             break;
         }
         else{
-            ++iterador;
+            ++pCriterios;
         }
     }
 }

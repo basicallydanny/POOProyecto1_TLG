@@ -16,7 +16,7 @@ void View::mostrarMenuGeneral(){
             // TODO: guardar actas y personal
         break;
         case 2:
-            // TODO: cargar actas y personal
+            sistema.mostrarMenuAsistente();
         break;
         }
     } 
