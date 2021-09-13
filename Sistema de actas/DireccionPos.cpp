@@ -1,7 +1,8 @@
 #include <iostream>
-#include <string>
 #include "DireccionPos.h"
-#include "Acta.h"
+
+
+using namespace std;
 
 enum tipoPersonal { noValido = 0, asistente, jurado, director };
 
@@ -110,19 +111,21 @@ void DireccionPos::mostrarMenuDirector(){
 void DireccionPos::crearActa(){
     string fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos;
     int ExisteCoDirector = -1, opc = -1;
+    //char fecha[50];
     cout << "Creando una nueva de grado\n";
     cout << "Ingrese fecha: ";
-    cin >> fecha;
+    cin.ignore();
+    getline(cin, fecha);
     cout << "Ingrese el numero del acta: ";
-    cin >> numeroActa;
+    getline(cin, numeroActa);
     cout << "Ingrese el nombre del estudiante: ";
-    cin >> nombreEstudiante;
+    getline(cin, nombreEstudiante);
     cout << "Ingrese el tipo de trabajo: ";
-    cin >> tipoTrabajo;
+    getline(cin, tipoTrabajo);
     cout << "Ingrese el nombre del trabajo: ";
-    cin >> nombreTrabajo;
+    getline(cin, nombreTrabajo);
     cout << "Ingrese el director: ";
-    cin >> nombreDirector;
+    getline(cin, nombreDirector);
     cout << "¿Existe co-director?\n1. No\n2. Si\n";
     cin >> ExisteCoDirector;
     if (ExisteCoDirector == 1){
@@ -130,12 +133,13 @@ void DireccionPos::crearActa(){
     }
     else{
         cout << "Ingrese el nombre del co director: ";
-        cin >> coNombreDirector;
+        cin.ignore();
+        getline(cin, coNombreDirector);
     }
     cout << "Ingrese el jurado 1: ";
-    cin >> juradoUno;
+    getline(cin, juradoUno);
     cout << "Ingrese el jurado 2: ";
-    cin >> juradoDos;
+    getline(cin, juradoDos);
     cout << "Acta creada, se muestra su informacion\n";
     Acta actaP(fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos);
     actaP.mostrarActa();

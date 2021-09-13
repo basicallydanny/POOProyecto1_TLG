@@ -87,5 +87,6 @@ void Acta::mostrarActa(){
     cout << "Jurado 2: " << this->juradoDos <<"\n";
     cout << "Nombre del estudiante: " << this->nombreAutor <<"\n";
     cout << "Nombre del trabajo: " << this->nombreTrabajo <<"\n";
+    cout << "Tipo de trabajo: " << this->tipoTrabajo << "\n";
     cout << "Fecha: " << this->fecha <<"\n";
 }

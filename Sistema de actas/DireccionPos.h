@@ -9,11 +9,13 @@
 #include "Acta.h"
 #include "Personal.h"
 
+
 using std::cout;
 using std::cin;
 using std::string;
 using std::vector;
 using std::map;
+using std::getline;
 
 class DireccionPos{
 private:
