@@ -31,8 +31,7 @@ public:
     float getCalificacionFinal();
     string getObsAdicionales();
     void setObsAdicionales(string observasion);
-
-    void addCriterio(string titulo, string observacion, float ponderado, float calificacion);
+    void addCriterio(string titulo, string observacion, float ponderado, float calificacion1, float calificacion2);
     void delCriterio(string titulo);
     vector<Criterio> getCriterios();
 };

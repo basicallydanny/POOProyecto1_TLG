@@ -3,8 +3,6 @@
 
 using namespace std;
 
-
-
 enum tipoPersonal { noValido = 0, asistente, jurado, director };
 
 tipoPersonal convert(const std::string& str){
@@ -112,18 +110,15 @@ void DireccionPos::mostrarMenuDirector(){
 
 }*/
 
-void DireccionPos::addCriterio(){
+void DireccionPos::newCriterio(){
     string titulo, observacion = "";
-    float ponderado, calificacion = 0.0;
+    float ponderado, calificacion1 = 0.0, calificacion2 = 0.0;
     cout << "Creando un nuevo criterio...\n";
     cout << "Titulo del criterio:"; getline(cin, titulo);
+    cin.ignore();
     cout << "Ponderado del criterio:"; cin >> ponderado;
-    Criterio crit( titulo, observacion, ponderado, calificacion );
+    Criterio crit( titulo, observacion, ponderado, calificacion1, calificacion2);
     cout << "Nuevo criterio creado exitosamente.\n";
-}
-
-void DireccionPos::delCriterio(){
-
 }
 
 void DireccionPos::crearActa(){
@@ -168,16 +163,13 @@ void DireccionPos::crearActa(){
     }
     else{
         listaActas.push_back(actaP);
-        cout << "Acta creada y guardada\n";
+        cout << "Acta creada y guardada.\n";
     }
 }
 
 void DireccionPos::VerActas(){
-    
-    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++)
-    {
+    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
         pActas->mostrarActa();
         cout << "\n";
     }
-    
 }

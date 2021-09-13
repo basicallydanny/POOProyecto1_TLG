@@ -33,8 +33,9 @@ public:
     void crearActa();
     void modificarActa();
     void VerActas();
-    void addCriterio();
-    void delCriterio();
+    void newCriterio();
+    void deleteCriterio();
+    void VerCriterio();
 };
 
 #endif
