@@ -26,6 +26,7 @@ public:
     void mostrarMenuJurado();
     void mostrarCriterios();
     void crearActa();
+    void modificarActa();
 };
 
 
