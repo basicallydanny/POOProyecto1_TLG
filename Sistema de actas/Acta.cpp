@@ -16,6 +16,7 @@ Acta::Acta(string fecha, string numeroActa, string nombreEstudiante, string nomb
         this->juradoUno = juradoUno;
         this->juradoDos = juradoDos;
     }
+    
 string Acta::getNumeroActa(){
     return this-> numeroActa;
 }

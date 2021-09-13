@@ -1,8 +1,9 @@
 #include <iostream>
 #include "DireccionPos.h"
 
-
 using namespace std;
+
+
 
 enum tipoPersonal { noValido = 0, asistente, jurado, director };
 
@@ -87,6 +88,8 @@ void DireccionPos::mostrarMenuDirector(){
          << "1. Ver Resumen de Actas\n"
          << "2. Ver Criterios Actuales\n"
          << "3. Editar Criterios Actuales\n"
+         << "4. Añadir Nuevo Criterio\n"
+         << "5. Eliminar Criterio Existente\n"
          << "o. EXIT\n"
          << "OPC:";
          cin >> opc; cout << "\n ";
@@ -97,6 +100,7 @@ void DireccionPos::mostrarMenuDirector(){
                ; break;
               case 3:
                ; break;
+               
               case 0: 
                break;
          }
@@ -107,6 +111,20 @@ void DireccionPos::mostrarMenuDirector(){
 /*void mostrarCriterios(){
 
 }*/
+
+void DireccionPos::addCriterio(){
+    string titulo, observacion = "";
+    float ponderado, calificacion = 0.0;
+    cout << "Creando un nuevo criterio...\n";
+    cout << "Titulo del criterio:"; getline(cin, titulo);
+    cout << "Ponderado del criterio:"; cin >> ponderado;
+    Criterio crit( titulo, observacion, ponderado, calificacion );
+    cout << "Nuevo criterio creado exitosamente.\n";
+}
+
+void DireccionPos::delCriterio(){
+
+}
 
 void DireccionPos::crearActa(){
     string fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos;
