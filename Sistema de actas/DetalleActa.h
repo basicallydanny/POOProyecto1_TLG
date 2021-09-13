@@ -13,8 +13,7 @@ using std::string;
 using std::vector;
 
 //Clase
-class DetalleActa
-{
+class DetalleActa{
 private:
     float calificacionFinal;
     string observacionesAdicionales;

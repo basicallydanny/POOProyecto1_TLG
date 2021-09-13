@@ -1,7 +1,8 @@
 #include "View.h"
 
-int main()
-{
-
+int main(){
+    View javeriana;
+    javeriana.mostrarMenuGeneral();
+    system("pause");
     return 0;
 }

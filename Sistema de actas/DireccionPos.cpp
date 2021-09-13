@@ -1,5 +1,109 @@
+#include <iostream>
+#include <string>
 #include "DireccionPos.h"
 #include "Acta.h"
+
+enum tipoPersonal { noValido = 0, asistente, jurado, director };
+
+tipoPersonal convert(const std::string& str){
+    if(str == "noValido") return noValido;
+    if(str == "Asistente") return asistente;
+    else if(str == "Jurado") return jurado;
+    else if(str == "Director") return director;
+}
+
+void DireccionPos::loginUsuario(string user){
+    string loginID = "noValido";
+
+    for (map<int,Personal>::iterator pPersonal = personalAdmin.begin();
+		 pPersonal != personalAdmin.end(); pPersonal++){
+        if ( user == pPersonal->second.getNombre() )
+        loginID = pPersonal->second.getCargo();
+	}
+
+    int opc = convert(loginID);
+
+    switch (opc){
+    case asistente:
+        mostrarMenuAsistente(); break;
+    case jurado:
+        mostrarMenuJurado(); break;
+    case director:
+        mostrarMenuDirector(); break;
+    default:
+        cout << "Usuario no valido"; break;
+    }
+
+}
+
+void DireccionPos::mostrarMenuAsistente(){
+     int opc;
+     do{
+         cout << "\n\n MENU ASISTENTE \n"
+         << "1. Crear Acta\n"
+         << "2. Ver Actas\n"
+         << "o. EXIT\n"
+         << "OPC:";
+         cin >> opc; cout << "\n ";
+         switch(opc){
+              case 1:
+               ; break;
+              case 2:
+               ; break;
+              case 0: 
+               break;
+         }
+     } while (opc != 0);
+}
+
+void DireccionPos::mostrarMenuJurado(){
+    int opc;
+     do{
+         cout << "\n\n MENU JURADO \n"
+         << "1. Evaluar Tesis de Maestria\n"
+         << "2. Ver Tesis Aprobadas y Reprobadas\n"
+         << "o. EXIT\n"
+         << "OPC:";
+         cin >> opc; cout << "\n ";
+         switch(opc){
+              case 1:
+               ; break;
+              case 2:
+               ; break;
+              case 0: 
+               break;
+         }
+     } while (opc != 0);
+     return;
+}
+
+void DireccionPos::mostrarMenuDirector(){
+    int opc;
+     do{
+         cout << "\n\n MENU DIRECTOR \n"
+         << "1. Ver Resumen de Actas\n"
+         << "2. Ver Criterios Actuales\n"
+         << "3. Editar Criterios Actuales\n"
+         << "o. EXIT\n"
+         << "OPC:";
+         cin >> opc; cout << "\n ";
+         switch(opc){
+              case 1:
+               ; break;
+              case 2:
+               ; break;
+              case 3:
+               ; break;
+              case 0: 
+               break;
+         }
+     } while (opc != 0);
+     return;
+}
+
+/*void mostrarCriterios(){
+
+}*/
 
 void DireccionPos::crearActa(){
     string fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos;

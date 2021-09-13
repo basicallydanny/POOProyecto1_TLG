@@ -10,8 +10,7 @@ using std::cin;
 using std::string;
 //Clase
 
-class Criterio
-{
+class Criterio{
 private:
     string titulo;
     string observacion;
