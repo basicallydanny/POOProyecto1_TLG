@@ -15,8 +15,7 @@ using std::string;
 using std::vector;
 using std::map;
 
-class DireccionPos
-{
+class DireccionPos{
 private:
     int contActas;
     map <int, Personal> personalAdmin;

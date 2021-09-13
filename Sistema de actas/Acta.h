@@ -10,8 +10,7 @@ using std::cout;
 using std::cin;
 using std::string;
 //Clase
-class Acta
-{
+class Acta{
 private:
     string numeroActa;
     string fecha;

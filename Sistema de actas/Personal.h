@@ -9,8 +9,7 @@ using std::cout;
 using std::cin;
 using std::string;
 //Clase
-class Personal
-{
+class Personal{
 private:
  string nombre;
  string cargo;
