@@ -1,6 +1,6 @@
 #include "View.h"
 
-View::View(){}
+
 
 void View::mostrarMenuGeneral(){
     int opc = -1;
@@ -14,8 +14,11 @@ void View::mostrarMenuGeneral(){
         switch (opc){
         case 1:
             // TODO: guardar actas y personal
+        break;
         case 2:
             // TODO: cargar actas y personal
+        break;
         }
-    } while (opc != 0);
+    } 
+    while (opc != 0);
 }
