@@ -21,6 +21,7 @@ private:
     string codirector;
     string juradoUno;
     string juradoDos;
+    string estado;
     DetalleActa CuerpoActa;
 public:
     Acta();
@@ -44,9 +45,12 @@ public:
     void setCodirector(string codirector);
     string getJuradoUno();
     void setJuradoUno(string juradoUno);
+    string getEstado();
+    void setEstado(string estado);
     string getJuradoDos();
     void setJuradoDos(string juradoDOs);
     void mostrarActa();
+
 };
 
 
