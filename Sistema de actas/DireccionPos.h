@@ -8,6 +8,9 @@
 #include <map>
 #include "Acta.h"
 #include "Personal.h"
+#include <sstream>
+#include <fstream>
+using namespace std;
 
 
 using std::cout;
@@ -38,6 +41,7 @@ public:
     void VerCriterio();
     void verResumen();
     void editarCriterios();
+    void generarReporte(Acta acta);
 };
 
 #endif

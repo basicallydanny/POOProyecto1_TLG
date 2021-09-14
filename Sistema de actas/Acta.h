@@ -30,6 +30,7 @@ private:
     string observacionesAdicionales;
     vector<Criterio>listaCriterios;
 
+
 public:
 
     Acta();
@@ -65,6 +66,7 @@ public:
     void setObsAdicionales(string observasion);
     void setCriterios(vector<Criterio>criterios);
     void mostrarActa();
+    vector <Criterio> getCriteros() const { return listaCriterios; }
 };
 
 

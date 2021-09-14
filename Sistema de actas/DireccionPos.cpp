@@ -33,7 +33,6 @@ void DireccionPos::loginUsuario(string user){
     default:
         cout << "Usuario no valido"; break;
     }
-
 }
 
 void DireccionPos::mostrarMenuAsistente(){
@@ -198,5 +197,35 @@ void DireccionPos::editarCriterios(){
     cin >> ponderacion;
     criterios[opcion].setTitulo(titulo);
     criterios[opcion].setPonderado(ponderacion);
-
 }
+
+string intAString(int codigo){
+  std::string text;
+  ostringstream outs; 
+  outs << codigo;
+  text = outs.str();   
+  return text;
+}        
+
+void DireccionPos::generarReporte(Acta acta){
+    std::string reporte = "Reporte" + intAString(acta.getNumeroActa()) + ".txt";  
+    ofstream write (reporte.c_str());
+    write << "ACTA: " << acta.getNumeroActa() << "\n\n";
+    write << "ACTA DE EVALUACIÓN DE TRABAJO DE GRADO";
+    write << "Autor:       " << acta.getNombreAutor() << "\n";
+    write << "Director:    " << acta.getDirector() << "\n";
+    write << "CoDirector:  " << acta.getCodirector() << "\n";
+    write << "Enfasis en:   Sistemas y Computación \n";
+    write << "Modalidad:   " << acta.getTipoTrabajo()<< "\n";
+    write << "Jurado 1:   " << acta.getJuradoUno()<< "\n";
+    write << "Jurado 2:   " << acta.getJuradoDos()<< "\n";
+
+    write << "En atención al desarrollo de este Trabajo de Grado y al documento y sustentación que presentó el(la) autor(a)"  
+    << "los Jurados damos las siguientes calificaciones parciales y observaciones (los criterios a evaluar y sus" <<
+    "ponderaciones se estipulan en el artículo 7.1 de las Directrices para Trabajo de Grado de Maestría):";
+
+    
+
+    write.close();
+}
+
