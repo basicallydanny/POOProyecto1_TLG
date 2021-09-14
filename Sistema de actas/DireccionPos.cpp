@@ -102,8 +102,13 @@ void DireccionPos::mostrarMenuDirector(){
             case 3:
                 editarCriterios();
                 break;   
-            case 0: 
+            case 4:
+                añadirCriterio();
+            case 5:
+                eliminarCriterio(); 
                break;
+            case 0:
+                break;
          }
      } while (opc != 0);
      return;
@@ -217,7 +222,7 @@ void DireccionPos::añadirCriterio(){
     criterios.push_back(critPlus);
     cout << "Criterio creado y actualizados\n"; 
     for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
-        pActas->setCriterios(criterios);
+        pActas->getCriterios().push_back(critPlus);
     } 
 }
 
@@ -226,11 +231,18 @@ void DireccionPos::eliminarCriterio(){
     VerCriterio();
     cout << "Que criterio desea eliminar: ";
     cin >> opcion;
-    criterios.erase(criterios.begin()+ opcion - 1);
-    cout << "Criterio eliminado y actualizados\n"; 
-    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
-        pActas->setCriterios(criterios);
-    } 
+    if (criterios.size() < opcion && opcion > 0){
+        criterios.erase(criterios.begin()+ opcion - 1);
+        cout << "Criterio eliminado y actualizados\n"; 
+        for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
+            pActas->getCriterios().erase(criterios.begin()+ opcion - 1);
+        } 
+    }else{
+        cout << "Indice Invalido\n";
+        return;
+    }
+    
+
 }
 
 string intAString(int codigo){
@@ -293,7 +305,9 @@ void DireccionPos::evaluarActa(){
             pCriterio->setCalificacionUno(calificacionUno);
             pCriterio->setCalificacionDos(calificacionDos);
         }
-    listaActas[opcion].obtenerCalificacionFinal();       
+    listaActas[opcion].obtenerCalificacionFinal(); 
+    generarReporte(listaActas[opcion]);      
+    cout << "La nota es de: " << listaActas[opcion].getCalificacionFinal() << "El trabajo es: " << listaActas[opcion].getEstado() << "\n"; 
     }
 }
 
