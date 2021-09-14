@@ -31,11 +31,14 @@ codirector (algunas veces existe un codirector), jurado 1, jurado 2.
 - Exportar la informacion de las actas
 ### Director puede:
 -	Modificar descripcion y peso de criterios de evaluacion
--	Ver el resumen de las actas creadas 
+-	Ver el resumen de las actas creadas:
   - número del acta, la fecha, nombre del estudiante, estado, nota, nombre de los jurados y director.
 
 ## :white_circle: Requisitos Funcionales
--	:heavy_check_mark: Aquí especificaríamos los métodos que utilizamos para cumplir los requisitos
-
+-	:heavy_check_mark: Crear o cargar sistema de actas.
+-	:heavy_check_mark: Clase Personal compuesta por nombre y cargo, utilizada para registrar personal y acceder a menús personalizados según el cargo del usuario.
+-	:heavy_check_mark: Ver, crear, y editar actas con datos de número de acta, fecha, nombre del autor, título del trabajo, director y codirector, ambos jurados, el estado de aprovado o reprobado, la calificación final y observaciones para cada criterio. 
+-	:heavy_check_mark: Generar documentos .txt según el código del acta.
+-	:heavy_check_mark: Crear y eliminar criterios con sus respectivos comentarios. 
 
 
