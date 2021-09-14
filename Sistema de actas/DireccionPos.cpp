@@ -208,6 +208,7 @@ string intAString(int codigo){
 }        
 
 void DireccionPos::generarReporte(Acta acta){
+    vector <Criterio> copiaCriterio = acta.getCriterios();
     std::string reporte = "Reporte" + intAString(acta.getNumeroActa()) + ".txt";  
     ofstream write (reporte.c_str());
     write << "ACTA: " << acta.getNumeroActa() << "\n\n";
@@ -224,8 +225,12 @@ void DireccionPos::generarReporte(Acta acta){
     << "los Jurados damos las siguientes calificaciones parciales y observaciones (los criterios a evaluar y sus" <<
     "ponderaciones se estipulan en el artículo 7.1 de las Directrices para Trabajo de Grado de Maestría):";
 
-    
-
+    for (vector<Criterio>::iterator pCriterios = copiaCriterio.begin(); pCriterios != copiaCriterio.end(); pCriterios++){
+		write << pCriterios->getTitulo() << "/n";
+        float notafinal = (pCriterios->getCalificacionUno() + pCriterios->getCalificacionDos()) / 2;
+        write << "Calificacion Parcial: " << notafinal << "          " << pCriterios->getPonderado() << "/n";
+        write << "Observaciones: " << pCriterios->getObservacion() << "/n";
+	}
     write.close();
 }
 
