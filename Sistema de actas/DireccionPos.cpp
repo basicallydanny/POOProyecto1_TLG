@@ -92,45 +92,32 @@ void DireccionPos::mostrarMenuDirector(){
          << "OPC:";
          cin >> opc; cout << "\n ";
          switch(opc){
-              case 1:
-               ; break;
-              case 2:
-               ; break;
-              case 3:
-               ; break;
-               
-              case 0: 
+            case 1:
+                verResumen();
+                break;
+            case 2:
+                VerCriterio();
+                break;
+            case 3:
+                editarCriterios();
+                break;   
+            case 0: 
                break;
          }
      } while (opc != 0);
      return;
 }
 
-/*void mostrarCriterios(){
-
-}*/
-
-void DireccionPos::newCriterio(){
-    string titulo, observacion = "";
-    float ponderado, calificacion1 = 0.0, calificacion2 = 0.0;
-    cout << "Creando un nuevo criterio...\n";
-    cout << "Titulo del criterio:"; getline(cin, titulo);
-    cin.ignore();
-    cout << "Ponderado del criterio:"; cin >> ponderado;
-    Criterio crit( titulo, observacion, ponderado, calificacion1, calificacion2);
-    cout << "Nuevo criterio creado exitosamente.\n";
-}
-
 void DireccionPos::crearActa(){
-    string fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos;
-    int ExisteCoDirector = -1, opc = -1;
-    //char fecha[50];
+    string fecha, nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos;
+    int ExisteCoDirector = -1, opc = -1, numeroActa;
+
     cout << "Creando una nueva de grado\n";
     cout << "Ingrese fecha: ";
     cin.ignore();
     getline(cin, fecha);
     cout << "Ingrese el numero del acta: ";
-    getline(cin, numeroActa);
+    cin >> numeroActa;
     cout << "Ingrese el nombre del estudiante: ";
     getline(cin, nombreEstudiante);
     cout << "Ingrese el tipo de trabajo: ";
@@ -154,7 +141,7 @@ void DireccionPos::crearActa(){
     cout << "Ingrese el jurado 2: ";
     getline(cin, juradoDos);
     cout << "Acta creada, se muestra su informacion\n";
-    Acta actaP(fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos);
+    Acta actaP(fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos, criterios);
     actaP.mostrarActa();
      cout << "¿Desea guardar el acta?\n1. No\n2. Si\n";
     cin >> opc;
@@ -172,4 +159,44 @@ void DireccionPos::VerActas(){
         pActas->mostrarActa();
         cout << "\n";
     }
+}
+
+void DireccionPos::verResumen(){
+    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
+        cout << pActas->getNumeroActa() << "\n";
+        cout << pActas->getFecha() << "\n";
+        cout << pActas->getNombreAutor() << "\n";
+        cout << pActas->getEstado() << "\n";
+        cout << pActas->getCalificacionFinal() << "\n";
+        cout << pActas->getJuradoUno() << "\n";
+        cout << pActas->getJuradoDos() << "\n";
+        cout << pActas->getDirector() << "\n";
+        cout << "\n";
+    }
+}
+
+void DireccionPos::VerCriterio(){
+    int contador = 1;
+    for (vector<Criterio>::iterator pCriterios = criterios.begin(); pCriterios != criterios.end(); pCriterios++){
+        cout << "Criterio numero " << ++contador << ".\n";
+        cout << pCriterios->getTitulo() << "\n";
+        cout << pCriterios->getPonderado() << "\n";
+    }
+}
+
+void DireccionPos::editarCriterios(){
+    int opcion = -1;
+    string titulo;
+    float ponderacion;
+    VerCriterio();
+    cout << "Que criterio desea editar: ";
+    cin >> opcion;
+    cout << "Nuevo Titualo: ";
+    cin.ignore();
+    getline(cin, titulo);
+    cout << "nueva ponderacion: ";
+    cin >> ponderacion;
+    criterios[opcion].setTitulo(titulo);
+    criterios[opcion].setPonderado(ponderacion);
+
 }

@@ -22,7 +22,7 @@ private:
     int contActas;
     map <int, Personal> personalAdmin;
     vector<Acta>listaActas;
-
+    vector<Criterio>criterios;
 public:
     void loginUsuario(string);
     void mostrarMenuAsistente();
@@ -36,6 +36,8 @@ public:
     void newCriterio();
     void deleteCriterio();
     void VerCriterio();
+    void verResumen();
+    void editarCriterios();
 };
 
 #endif

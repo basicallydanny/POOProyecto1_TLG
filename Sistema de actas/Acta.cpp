@@ -1,11 +1,11 @@
 #include "Acta.h"
 
 Acta::Acta(){
-    this->codirector ="N/A";
+    
 }
-Acta::Acta(string fecha, string numeroActa, string nombreEstudiante, string nombreTrabajo,
+Acta::Acta(string fecha, int numeroActa, string nombreEstudiante, string nombreTrabajo,
     string tipoTrabajo, string nombreDirector, string coNombreDirector, string juradoUno,
-    string juradoDos){
+    string juradoDos, vector<Criterio>criterios){
         this->fecha = fecha;
         this->numeroActa = numeroActa;
         this->nombreAutor = nombreEstudiante;
@@ -15,12 +15,13 @@ Acta::Acta(string fecha, string numeroActa, string nombreEstudiante, string nomb
         this->codirector = coNombreDirector;
         this->juradoUno = juradoUno;
         this->juradoDos = juradoDos;
+        this->listaCriterios = criterios;
     }
     
-string Acta::getNumeroActa(){
+int Acta::getNumeroActa(){
     return this-> numeroActa;
 }
-void Acta::setNumeroActa(string numeroActa){
+void Acta::setNumeroActa(int numeroActa){
     this->numeroActa = numeroActa;
 }
 
@@ -85,6 +86,22 @@ string Acta::getEstado(){
 void Acta::setEstado(string estado){
     this->estado=estado;
 }
+void Acta::setCalificacionFinal(float calificacionFinal){
+    this->calificacionFinal = calificacionFinal;
+}
+
+float Acta::getCalificacionFinal(){
+    return this->calificacionFinal;
+}
+
+void Acta::setObsAdicionales(string observasion){
+    this->observacionesAdicionales = observasion;
+}
+
+string Acta::getObsAdicionales(){
+    return this->observacionesAdicionales;
+}
+
 void Acta::mostrarActa(){
     cout << "Acta Numero: " << this->numeroActa <<"\n";
     cout << "Director: " << this->director <<"\n";
@@ -96,3 +113,8 @@ void Acta::mostrarActa(){
     cout << "Tipo de trabajo: " << this->tipoTrabajo << "\n";
     cout << "Fecha: " << this->fecha <<"\n";
 }
+
+void Acta::setCriterios(vector<Criterio>criterios){
+    this->listaCriterios = criterios;
+}
+

@@ -1,12 +1,10 @@
 all: compilar clean
-compilar: acta criterio detalleActa direccionPos personal view main 
-		g++ -o Sistema Acta.o Criterio.o DetalleActa.o DireccionPos.o Personal.o View.o Main.o
-acta: Acta.cpp Acta.h DetalleActa.h 
+compilar: acta criterio direccionPos personal view main 
+		g++ -o Sistema Acta.o Criterio.o DireccionPos.o Personal.o View.o Main.o
+acta: Acta.cpp Acta.h criterio.h 
 		g++ -c Acta.cpp
 criterio: Criterio.cpp Criterio.h
 		g++ -c Criterio.cpp
-detalleActa: DetalleActa.cpp DetalleActa.h Criterio.h
-		g++ -c DetalleActa.cpp
 direccionPos: DireccionPos.cpp DireccionPos.h Acta.h Personal.h
 		g++ -c DireccionPos.cpp
 personal: Personal.cpp Personal.h

@@ -4,15 +4,19 @@
 //Incluir librerias 
 #include <iostream>
 #include <string>
-#include "DetalleActa.h"
+#include <vector>
+#include "Criterio.h"
 
 using std::cout;
 using std::cin;
 using std::string;
+using std::vector;
+
 //Clase
 class Acta{
 private:
-    string numeroActa;
+
+    int numeroActa;
     string fecha;
     string nombreAutor;
     string nombreTrabajo;
@@ -22,15 +26,21 @@ private:
     string juradoUno;
     string juradoDos;
     string estado;
-    DetalleActa CuerpoActa;
+    float calificacionFinal;
+    string observacionesAdicionales;
+    vector<Criterio>listaCriterios;
+
 public:
+
     Acta();
-    Acta(string fecha, string numeroActa, string nombreEstudiante, string nombreTrabajo,
+    Acta(string fecha, int numeroActa, string nombreEstudiante, string nombreTrabajo,
     string tipoTrabajo, string nombreDirector, string coNombreDirector, string juradoUno,
-    string juradoDos);
+    string juradoDos, vector<Criterio>criterios);
+
     //gets & sets
-    string getNumeroActa();
-    void setNumeroActa(string numeroActa);
+
+    int getNumeroActa();
+    void setNumeroActa(int numeroActa);
     string getFecha();
     void setFecha(string fecha);
     string getNombreAutor();
@@ -48,9 +58,13 @@ public:
     string getEstado();
     void setEstado(string estado);
     string getJuradoDos();
-    void setJuradoDos(string juradoDOs);
+    void setJuradoDos(string juradoDos);
+    void setCalificacionFinal(float calificacionFinal);
+    float getCalificacionFinal();
+    string getObsAdicionales();
+    void setObsAdicionales(string observasion);
+    void setCriterios(vector<Criterio>criterios);
     void mostrarActa();
-
 };
 
 
