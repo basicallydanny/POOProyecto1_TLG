@@ -22,12 +22,14 @@ using std::getline;
 
 class DireccionPos{
 private:
-    int contActas;
+    int contActas, cantUsuarios;
     map <int, Personal> personalAdmin;
     vector<Acta>listaActas;
     vector<Criterio>criterios;
 public:
     void loginUsuario(string);
+    Personal nuevoUsuario();
+    void insertUsuario(Personal usuario);
     void mostrarMenuAsistente();
     void mostrarMenuDirector();
     void mostrarMenuJurado();

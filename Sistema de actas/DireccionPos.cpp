@@ -12,6 +12,39 @@ tipoPersonal convert(const std::string& str){
     else if(str == "Director") return director;
 }
 
+Personal DireccionPos::nuevoUsuario(){
+    string nombre;
+    int cargo;
+    Personal usuarioNuevo;
+
+    cout<<"Ingrese el nombre de usuario: \n";
+    cin>>nombre;
+    fflush(stdin);
+    usuarioNuevo.setNombre(nombre);
+    cout<<"Que cargo tiene?\n1.Jurado\n2.Director\n3.Asistente";
+    cin>>cargo;
+    switch (cargo){
+    case 1:
+        usuarioNuevo.setCargo("jurado");
+        break;
+    case 2:
+        usuarioNuevo.setCargo("director");
+        break;
+    case 3:
+        usuarioNuevo.setCargo("asistente");
+        break;
+    default:
+        cout<<"Entrada no valida\n";
+        break;
+    }
+    return usuarioNuevo;
+}
+
+void DireccionPos::insertUsuario(Personal usuario){
+
+    this->personalAdmin.insert(std::pair<int,Personal>(cantUsuarios++,usuario));
+}
+
 void DireccionPos::loginUsuario(string user){
     string loginID = "noValido";
 

@@ -5,6 +5,7 @@
 void View::mostrarMenuGeneral(){
     int opc = -1;
     fstream file_obj;
+    string usuarioA;
 
     do {
         cout << "1. Cargar Sistema \n";
@@ -18,7 +19,7 @@ void View::mostrarMenuGeneral(){
             file_obj.open("sistemaActas.txt", ios::out);
             file_obj.read((char*)&sistema, sizeof(sistema));
             file_obj.close();
-            //introducir metodos menu
+            sistema.insertUsuario(sistema.nuevoUsuario());
             file_obj.open("sistemaActas.txt", ios::trunc);
             file_obj.write((char*)&sistema, sizeof(sistema));
             file_obj.close();
@@ -26,8 +27,9 @@ void View::mostrarMenuGeneral(){
         break;
         case 2:
             file_obj.open("sistemaActas.txt", ios::trunc);
-            //introducir metodos menu
-            sistema.mostrarMenuAsistente();
+            cout<<"Ingrese el usuario: \n";
+            cin>>usuarioA;
+            sistema.loginUsuario(usuarioA);
             file_obj.write((char*)&sistema, sizeof(sistema));
             file_obj.close();
         break;
