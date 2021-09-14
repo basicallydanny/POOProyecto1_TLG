@@ -41,7 +41,11 @@ public:
     void VerCriterio();
     void verResumen();
     void editarCriterios();
+    void añadirCriterio();
+    void eliminarCriterio();
     void generarReporte(Acta acta);
+    void evaluarActa();
+    void verReprobadosyAprobados();
 };
 
 #endif

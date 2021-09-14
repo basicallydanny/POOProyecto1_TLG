@@ -1,7 +1,11 @@
 #include "Criterio.h"
 
 Criterio::Criterio(){
-
+    this->titulo = "";
+    this->observacion ="";
+    this->ponderado = 0;
+    this->calificacionUno = 0;
+    this->calificacionDos = 0;
 }
 Criterio::Criterio(string titulo, string observacion, float ponderado, float calificacionUno, float calificacionDos){
     this->titulo = titulo;

@@ -93,7 +93,21 @@ void Acta::setCalificacionFinal(float calificacionFinal){
 float Acta::getCalificacionFinal(){
     return this->calificacionFinal;
 }
-
+void Acta::obtenerCalificacionFinal(){
+    float nota = 0;
+    for (vector<Criterio>::iterator pCriterio = listaCriterios.begin(); pCriterio != listaCriterios.end(); pCriterio++){
+        nota += ((pCriterio->getCalificacionUno() + pCriterio->getCalificacionDos())/2)*(pCriterio->getPonderado()/100);
+    }
+    this->calificacionFinal = nota;
+    if (nota <= 3.5)
+    {
+        this->estado = "Aprobado";
+    }
+    else{
+        this->estado = "Reprobado";
+    }
+    
+}
 void Acta::setObsAdicionales(string observasion){
     this->observacionesAdicionales = observasion;
 }

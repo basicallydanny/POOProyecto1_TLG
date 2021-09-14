@@ -62,11 +62,12 @@ public:
     void setJuradoDos(string juradoDos);
     void setCalificacionFinal(float calificacionFinal);
     float getCalificacionFinal();
+    void obtenerCalificacionFinal();
     string getObsAdicionales();
     void setObsAdicionales(string observasion);
     void setCriterios(vector<Criterio>criterios);
     void mostrarActa();
-    vector <Criterio> getCriteros() const { return listaCriterios; }
+    vector <Criterio> getCriterios() const { return listaCriterios; }
 };
 
 

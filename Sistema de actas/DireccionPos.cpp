@@ -67,10 +67,12 @@ void DireccionPos::mostrarMenuJurado(){
          << "OPC:";
          cin >> opc; cout << "\n ";
          switch(opc){
-              case 1:
-               ; break;
-              case 2:
-               ; break;
+            case 1:
+                evaluarActa();
+                break;
+            case 2:
+                verReprobadosyAprobados();
+                break;
               case 0: 
                break;
          }
@@ -154,7 +156,9 @@ void DireccionPos::crearActa(){
 }
 
 void DireccionPos::VerActas(){
+    int contadorActa = 1;
     for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
+        cout << "Acta #" << ++contadorActa << "\n";
         pActas->mostrarActa();
         cout << "\n";
     }
@@ -199,6 +203,36 @@ void DireccionPos::editarCriterios(){
     criterios[opcion].setPonderado(ponderacion);
 }
 
+void DireccionPos::añadirCriterio(){
+    string titulo;
+    float ponderacion;
+    cout << "Ingrese el titulo: ";
+    cin.ignore();
+    getline(cin, titulo);
+    cout << "Ingrese la ponderacion: ";
+    cin >> ponderacion;
+    Criterio critPlus;
+    critPlus.setTitulo(titulo);
+    critPlus.setPonderado(ponderacion);
+    criterios.push_back(critPlus);
+    cout << "Criterio creado y actualizados\n"; 
+    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
+        pActas->setCriterios(criterios);
+    } 
+}
+
+void DireccionPos::eliminarCriterio(){
+    int opcion = -1;
+    VerCriterio();
+    cout << "Que criterio desea eliminar: ";
+    cin >> opcion;
+    criterios.erase(criterios.begin()+ opcion - 1);
+    cout << "Criterio eliminado y actualizados\n"; 
+    for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
+        pActas->setCriterios(criterios);
+    } 
+}
+
 string intAString(int codigo){
   std::string text;
   ostringstream outs; 
@@ -234,3 +268,46 @@ void DireccionPos::generarReporte(Acta acta){
     write.close();
 }
 
+void DireccionPos::evaluarActa(){
+    int opcion = -1;
+    float calificacionUno = 0, calificacionDos = 0;
+    string observacion;
+    VerActas();
+    cout << "Que acta va a evaluar: ";
+    cin >> opcion;
+    if (opcion > listaActas.size() || opcion < 1){
+        cout << "Indice invalido";
+        return;
+    }
+    else{
+        for (vector<Criterio>::iterator pCriterio = listaActas[opcion].getCriterios().begin(); pCriterio != listaActas[opcion].getCriterios().end(); pCriterio++ ){
+            cout << "Criterio: " << pCriterio->getTitulo() << "\n";
+            cout << "Ingrese la nota del jurado " << listaActas[opcion].getJuradoUno() << ": ";
+            cin >> calificacionUno;
+            cout << "Ingrese la nota del jurado " << listaActas[opcion].getJuradoDos() << ": ";
+            cin >> calificacionDos;
+            cout << "Ingrese la observacion: ";
+            cin.ignore();
+            getline(cin, observacion);
+            pCriterio->setObservacion(observacion);
+            pCriterio->setCalificacionUno(calificacionUno);
+            pCriterio->setCalificacionDos(calificacionDos);
+        }
+    listaActas[opcion].obtenerCalificacionFinal();       
+    }
+}
+
+void DireccionPos::verReprobadosyAprobados(){
+    cout << "Aprobados: \n";
+    for (vector<Acta>::iterator pActa = listaActas.begin(); pActa != listaActas.end(); pActa++){
+        if (pActa->getEstado() == "Aprobado"){
+            pActa->mostrarActa();
+        }
+    }
+    cout << "Reprobados: \n";
+    for (vector<Acta>::iterator pActa = listaActas.begin(); pActa != listaActas.end(); pActa++){
+        if (pActa->getEstado() == "Reprobado"){
+            pActa->mostrarActa();
+        }
+    }
+}
