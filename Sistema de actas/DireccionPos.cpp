@@ -137,7 +137,7 @@ void DireccionPos::mostrarMenuDirector(){
                 editarCriterios();
                 break;   
             case 4:
-                añadirCriterio();
+                newCriterio();
             case 5:
                 eliminarCriterio(); 
                break;
@@ -244,7 +244,7 @@ void DireccionPos::editarCriterios(){
     criterios[opcion].setPonderado(ponderacion);
 }
 
-void DireccionPos::añadirCriterio(){
+void DireccionPos::newCriterio(){
     string titulo;
     float ponderacion;
     cout << "Ingrese el titulo: ";

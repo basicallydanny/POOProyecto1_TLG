@@ -38,12 +38,10 @@ public:
     void crearActa();
     void modificarActa();
     void VerActas();
-    void newCriterio();
-    void deleteCriterio();
     void VerCriterio();
     void verResumen();
     void editarCriterios();
-    void añadirCriterio();
+    void newCriterio();
     void eliminarCriterio();
     void generarReporte(Acta acta);
     void evaluarActa();
