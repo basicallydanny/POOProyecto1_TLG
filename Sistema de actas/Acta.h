@@ -1,7 +1,6 @@
-//Guardas 
 #ifndef ACTA_H
 #define ACTA_H
-//Incluir librerias 
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -12,7 +11,6 @@ using std::cin;
 using std::string;
 using std::vector;
 
-//Clase
 class Acta{
 private:
 
@@ -30,15 +28,12 @@ private:
     string observacionesAdicionales;
     vector<Criterio>listaCriterios;
 
-
 public:
 
     Acta();
     Acta(string fecha, int numeroActa, string nombreEstudiante, string nombreTrabajo,
     string tipoTrabajo, string nombreDirector, string coNombreDirector, string juradoUno,
     string juradoDos, vector<Criterio>criterios);
-
-    //gets & sets
 
     int getNumeroActa();
     void setNumeroActa(int numeroActa);
@@ -63,6 +58,7 @@ public:
     void setCalificacionFinal(float calificacionFinal);
     float getCalificacionFinal();
     string getObsAdicionales();
+    void obtenerCalificacionFinal();
     void setObsAdicionales(string observasion);
     void setCriterios(vector<Criterio>criterios);
     void mostrarActa();

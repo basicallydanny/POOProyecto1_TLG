@@ -1,17 +1,17 @@
-//Guardas 
 #ifndef DIRECCIONPOS_H
 #define DIRECCIONPOS_H
-//Incluir librerias 
 #include <iostream>
+
 #include <string>
 #include <vector>
 #include <map>
-#include "Acta.h"
-#include "Personal.h"
 #include <sstream>
 #include <fstream>
-using namespace std;
 
+#include "Acta.h"
+#include "Personal.h"
+
+using namespace std;
 
 using std::cout;
 using std::cin;

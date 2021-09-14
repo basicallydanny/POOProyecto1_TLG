@@ -1,19 +1,16 @@
 #include "View.h"
 
-
-
 void View::mostrarMenuGeneral(){
     int opc = -1;
     fstream file_obj;
     string usuarioA;
 
     do {
-        cout << "1. Cargar Sistema \n";
-        cout << "2. Nuevo Sistema \n";
+        cout << "1. Nuevo Sistema \n";
+        cout << "2. Cargar Sistema \n";
         cout << "0. Salir \n";
         std::cout << "OPC: ";
         std::cin >> opc;
-
         switch (opc){
         case 1:
             file_obj.open("sistemaActas.txt", ios::out);

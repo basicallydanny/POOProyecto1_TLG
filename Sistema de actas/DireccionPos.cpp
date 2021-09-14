@@ -102,12 +102,12 @@ void DireccionPos::mostrarMenuJurado(){
          switch(opc){
             case 1:
                 evaluarActa();
-                break;
+            break;
             case 2:
                 verReprobadosyAprobados();
-                break;
-              case 0: 
-               break;
+            break;
+            case 0: 
+            break;
          }
      } while (opc != 0);
      return;
@@ -122,6 +122,7 @@ void DireccionPos::mostrarMenuDirector(){
          << "3. Editar Criterios Actuales\n"
          << "4. Añadir Nuevo Criterio\n"
          << "5. Eliminar Criterio Existente\n"
+         << "6. Añadir Nuevo Personal\n"
          << "o. EXIT\n"
          << "OPC:";
          cin >> opc; cout << "\n ";
@@ -140,6 +141,8 @@ void DireccionPos::mostrarMenuDirector(){
             case 5:
                 eliminarCriterio(); 
                break;
+            case 6: 
+                nuevoUsuario();
             case 0:
                 break;
          }
@@ -315,6 +318,7 @@ void DireccionPos::generarReporte(Acta acta){
 
 void DireccionPos::evaluarActa(){
     int opcion = -1;
+    int exportar = -1;
     float calificacionUno = 0, calificacionDos = 0;
     string observacion;
     VerActas();
@@ -341,6 +345,12 @@ void DireccionPos::evaluarActa(){
     listaActas[opcion].obtenerCalificacionFinal(); 
     generarReporte(listaActas[opcion]);      
     cout << "La nota es de: " << listaActas[opcion].getCalificacionFinal() << "El trabajo es: " << listaActas[opcion].getEstado() << "\n"; 
+    }
+
+    cout << "\nDesea generar un reporte del acta?\n 1. Si \n2. No\nOPC:";
+    cin >> exportar;
+    if ( exportar == 1 ){
+        generarReporte(listaActas[opcion]);
     }
 }
 
