@@ -62,7 +62,6 @@ public:
     void setJuradoDos(string juradoDos);
     void setCalificacionFinal(float calificacionFinal);
     float getCalificacionFinal();
-    void obtenerCalificacionFinal();
     string getObsAdicionales();
     void setObsAdicionales(string observasion);
     void setCriterios(vector<Criterio>criterios);
