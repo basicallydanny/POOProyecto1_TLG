@@ -15,6 +15,8 @@ void View::mostrarMenuGeneral(){
         std::cin >> opc;
         switch (opc){
         case 1:
+            leer.open("sistemaActas.txt", ios::out);
+            leer.close();
             leer.open("sistemaActas.txt", ios::in);
             leer.seekg(0);
             leer.read((char*)&sistema, sizeof(sistema));
