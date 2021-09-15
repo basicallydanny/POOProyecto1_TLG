@@ -41,4 +41,7 @@ codirector (algunas veces existe un codirector), jurado 1, jurado 2.
 -	:heavy_check_mark: Generar documentos .txt según el código del acta.
 -	:heavy_check_mark: Crear y eliminar criterios con sus respectivos comentarios. 
 
+## Diagrama UML:
+[ENLACE](https://drive.google.com/file/d/1qXF3PRivco4MIvBV1Oc9Oyauv5UlOTrq/view?usp=sharing)
+
 
