@@ -161,10 +161,13 @@ void DireccionPos::crearActa(){
     getline(cin, fecha);
     cout << "Ingrese el numero del acta: ";
     cin >> numeroActa;
+    while ((getchar()) != '\n');
     cout << "Ingrese el nombre del estudiante: ";
     getline(cin, nombreEstudiante);
+    while ((getchar()) != '\n');
     cout << "Ingrese el tipo de trabajo: ";
     getline(cin, tipoTrabajo);
+    while ((getchar()) != '\n');
     cout << "Ingrese el nombre del trabajo: ";
     getline(cin, nombreTrabajo);
     cout << "Ingrese el director: ";
@@ -179,11 +182,13 @@ void DireccionPos::crearActa(){
         cin.ignore();
         getline(cin, coNombreDirector);
     }
+    while ((getchar()) != '\n');
     cout << "Ingrese el jurado 1: ";
     getline(cin, juradoUno);
+    while ((getchar()) != '\n');
     cout << "Ingrese el jurado 2: ";
     getline(cin, juradoDos);
-    cout << "Acta creada, se muestra su informacion\n";
+    cout << "Acta creada, se muestra su informacion:\n";
     Acta actaP(fecha, numeroActa,nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos, criterios);
     actaP.mostrarActa();
      cout << "¿Desea guardar el acta?\n1. No\n2. Si\n";
