@@ -20,6 +20,7 @@ void View::mostrarMenuGeneral(){
             leer.read((char*)&sistema, sizeof(sistema));
             leer.close();
             sistema.insertUsuario(sistema.nuevoUsuario());
+            sistema.loginUsuario(usuarioA);
             escribir.open("sistemaActas.txt", ios::trunc);
             escribir.clear();
             escribir.write((char*)&sistema, sizeof(sistema));
