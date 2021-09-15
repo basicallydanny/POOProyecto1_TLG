@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum tipoPersonal { asistente = 1, jurado, director };
+enum tipoPersonal { jurado = 1, director, asistente };
 
 tipoPersonal convert(const std::string& str){
     if(str == "Asistente") return asistente;
@@ -55,11 +55,11 @@ void DireccionPos::loginUsuario(string user){
     int opc = convert(loginID);
     switch (opc){
     case 1:
-        mostrarMenuAsistente(); break;
-    case 2:
         mostrarMenuJurado(); break;
-    case 3:
+    case 2: 
         mostrarMenuDirector(); break;
+    case 3:
+        mostrarMenuAsistente(); break;
     default:
         cout << "Usuario no valido\n"; break;
     }
