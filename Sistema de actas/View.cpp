@@ -20,7 +20,6 @@ void View::mostrarMenuGeneral(){
             file_obj.open("sistemaActas.txt", ios::trunc);
             file_obj.write((char*)&sistema, sizeof(sistema));
             file_obj.close();
-            
         break;
         case 2:
             file_obj.open("sistemaActas.txt", ios::trunc);

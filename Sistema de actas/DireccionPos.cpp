@@ -3,10 +3,9 @@
 
 using namespace std;
 
-enum tipoPersonal { noValido = 0, asistente, jurado, director };
+enum tipoPersonal { asistente = 1, jurado, director };
 
 tipoPersonal convert(const std::string& str){
-    if(str == "noValido") return noValido;
     if(str == "Asistente") return asistente;
     else if(str == "Jurado") return jurado;
     else if(str == "Director") return director;
@@ -41,28 +40,25 @@ Personal DireccionPos::nuevoUsuario(){
 }
 
 void DireccionPos::insertUsuario(Personal usuario){
-
     this->personalAdmin.insert(std::pair<int,Personal>(cantUsuarios++,usuario));
 }
 
 void DireccionPos::loginUsuario(string user){
-    string loginID = "noValido";
-
+    string loginID;
     for (map<int,Personal>::iterator pPersonal = personalAdmin.begin();
 		pPersonal != personalAdmin.end(); pPersonal++){
         if ( cadenaAMinuscula(user) == cadenaAMinuscula(pPersonal->second.getNombre()) ){
             loginID = pPersonal->second.getCargo();
+            cout << "Identificado como:" << loginID;
         }
 	}
-
     int opc = convert(loginID);
-
     switch (opc){
-    case asistente:
+    case 1:
         mostrarMenuAsistente(); break;
-    case jurado:
+    case 2:
         mostrarMenuJurado(); break;
-    case director:
+    case 3:
         mostrarMenuDirector(); break;
     default:
         cout << "Usuario no valido\n"; break;
@@ -72,6 +68,7 @@ void DireccionPos::loginUsuario(string user){
 void DireccionPos::mostrarMenuAsistente(){
      int opc;
      do{
+        while ((getchar()) != '\n');
         cout << "MENU ASISTENTE\n"
         << "1. Crear Acta\n"
         << "2. Ver Actas\n"
@@ -81,12 +78,12 @@ void DireccionPos::mostrarMenuAsistente(){
         switch(opc){
             case 1:
                 crearActa();
-                break;
+            break;
             case 2:
                 VerActas();
-                break;
+            break;
             case 0: 
-                break;
+            break;
         }
     } while (opc != 0);
 }
@@ -94,6 +91,7 @@ void DireccionPos::mostrarMenuAsistente(){
 void DireccionPos::mostrarMenuJurado(){
     int opc;
      do{
+         while ((getchar()) != '\n');
          cout << "\n MENU JURADO \n"
          << "1. Evaluar Tesis de Maestria\n"
          << "2. Ver Tesis Aprobadas y Reprobadas\n"
@@ -115,37 +113,40 @@ void DireccionPos::mostrarMenuJurado(){
 }
 
 void DireccionPos::mostrarMenuDirector(){
-    int opc;
+    int opc = -1;
      do{
+         while ((getchar()) != '\n');
          cout << "\n MENU DIRECTOR \n"
          << "1. Ver Resumen de Actas\n"
          << "2. Ver Criterios Actuales\n"
          << "3. Editar Criterios Actuales\n"
-         << "4. Añadir Nuevo Criterio\n"
+         << "4. Anadir Nuevo Criterio\n"
          << "5. Eliminar Criterio Existente\n"
-         << "6. Añadir Nuevo Personal\n"
+         << "6. Anadir Nuevo Personal\n"
          << "o. EXIT\n"
          << "OPC:";
          cin >> opc; cout << "\n ";
          switch(opc){
             case 1:
                 verResumen();
-                break;
+            break;
             case 2:
                 VerCriterio();
-                break;
+            break;
             case 3:
                 editarCriterios();
-                break;   
+            break;   
             case 4:
                 newCriterio();
+            break;
             case 5:
                 eliminarCriterio(); 
-               break;
+            break;
             case 6: 
                 nuevoUsuario();
+            break;
             case 0:
-                break;
+            break;
          }
      } while (opc != 0);
      return;
@@ -154,8 +155,7 @@ void DireccionPos::mostrarMenuDirector(){
 void DireccionPos::crearActa(){
     string fecha, nombreEstudiante, nombreTrabajo, tipoTrabajo, nombreDirector, coNombreDirector, juradoUno, juradoDos;
     int ExisteCoDirector = -1, opc = -1, numeroActa;
-
-    cout << "Creando una nueva de grado\n";
+    cout << "Creando una nueva acta de grado\n";
     cout << "Ingrese fecha: ";
     cin.ignore();
     getline(cin, fecha);
@@ -248,8 +248,6 @@ void DireccionPos::editarCriterios(){
         criterios[opcion - 1].setTitulo(titulo);
         criterios[opcion - 1].setPonderado(ponderacion);
     }
-    
-    
 }
 
 void DireccionPos::newCriterio(){
@@ -285,8 +283,6 @@ void DireccionPos::eliminarCriterio(){
         cout << "Indice Invalido\n";
         return;
     }
-    
-
 }
 
 string intAString(int codigo){
@@ -354,7 +350,6 @@ void DireccionPos::evaluarActa(){
     generarReporte(listaActas[opcion]);      
     cout << "La nota es de: " << listaActas[opcion].getCalificacionFinal() << "El trabajo es: " << listaActas[opcion].getEstado() << "\n"; 
     }
-
     cout << "\nDesea generar un reporte del acta?\n 1. Si \n2. No\nOPC:";
     cin >> exportar;
     if ( exportar == 1 ){
