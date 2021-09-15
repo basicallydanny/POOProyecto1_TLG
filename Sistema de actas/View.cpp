@@ -2,7 +2,9 @@
 
 void View::mostrarMenuGeneral(){
     int opc = -1;
-    fstream file_obj;
+    ofstream escribir;
+    ifstream leer;
+
     string usuarioA;
 
     do {
@@ -13,21 +15,23 @@ void View::mostrarMenuGeneral(){
         std::cin >> opc;
         switch (opc){
         case 1:
-            file_obj.open("sistemaActas.txt", ios::out);
-            file_obj.read((char*)&sistema, sizeof(sistema));
-            file_obj.close();
+            leer.open("sistemaActas.txt", ios::in);
+            leer.seekg(0);
+            leer.read((char*)&sistema, sizeof(sistema));
+            leer.close();
             sistema.insertUsuario(sistema.nuevoUsuario());
-            file_obj.open("sistemaActas.txt", ios::trunc);
-            file_obj.write((char*)&sistema, sizeof(sistema));
-            file_obj.close();
+            escribir.open("sistemaActas.txt", ios::trunc);
+            escribir.clear();
+            escribir.write((char*)&sistema, sizeof(sistema));
+            escribir.close();
         break;
         case 2:
-            file_obj.open("sistemaActas.txt", ios::trunc);
             cout<<"Ingrese el usuario: \n";
             cin>>usuarioA;
             sistema.loginUsuario(usuarioA);
-            file_obj.write((char*)&sistema, sizeof(sistema));
-            file_obj.close();
+            escribir.open("sistemaActas.txt", ios::trunc);
+            escribir.write((char*)&sistema, sizeof(sistema));
+            escribir.close();
         break;
         }
     } 
