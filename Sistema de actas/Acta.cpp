@@ -97,25 +97,22 @@ void Acta::obtenerCalificacionFinal(){
     float nota = 0;
     for (vector<Criterio>::iterator pCriterio = listaCriterios.begin(); pCriterio != listaCriterios.end(); pCriterio++){
         nota += ((pCriterio->getCalificacionUno() + pCriterio->getCalificacionDos())/2)*(pCriterio->getPonderado()/100);
+        cout << nota << "\n";
     }
     this->calificacionFinal = nota;
-    if (nota <= 3.5)
-    {
+    if (nota <= 3.5){
         this->estado = "Aprobado";
     }
     else{
         this->estado = "Reprobado";
     }
-    
 }
 void Acta::setObsAdicionales(string observasion){
     this->observacionesAdicionales = observasion;
 }
-
 string Acta::getObsAdicionales(){
     return this->observacionesAdicionales;
 }
-
 void Acta::mostrarActa(){
     cout << "Acta Numero: " << this->numeroActa <<"\n";
     cout << "Director: " << this->director <<"\n";

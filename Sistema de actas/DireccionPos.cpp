@@ -203,7 +203,7 @@ void DireccionPos::crearActa(){
 }
 
 void DireccionPos::VerActas(){
-    int contadorActa = 1;
+    int contadorActa = 0;
     for (vector<Acta>::iterator pActas = listaActas.begin(); pActas != listaActas.end(); pActas++){
         cout << "Acta #" << ++contadorActa << "\n";
         pActas->mostrarActa();
@@ -226,7 +226,7 @@ void DireccionPos::verResumen(){
 }
 
 void DireccionPos::VerCriterio(){
-    int contador = 1;
+    int contador = 0;
     for (vector<Criterio>::iterator pCriterios = criterios.begin(); pCriterios != criterios.end(); pCriterios++){
         cout << "Criterio numero " << ++contador << ".\n";
         cout << pCriterios->getTitulo() << "\n";
@@ -331,35 +331,32 @@ void DireccionPos::evaluarActa(){
     float calificacionUno = 0, calificacionDos = 0;
     string observacion;
     VerActas();
-    cout << "Que acta va a evaluar: ";
+    cout << "Que codigo de acta va a evaluar: ";
     cin >> opcion;
-    if (opcion > listaActas.size() || opcion < 1){
-        cout << "Indice invalido";
-        return;
-    }
-    else{
-        for (vector<Criterio>::iterator pCriterio = listaActas[opcion].getCriterios().begin(); pCriterio != listaActas[opcion].getCriterios().end(); pCriterio++ ){
-            cout << "Criterio: " << pCriterio->getTitulo() << "\n";
-            cout << "Ingrese la nota del jurado " << listaActas[opcion].getJuradoUno() << ": ";
-            cin >> calificacionUno;
-            cout << "Ingrese la nota del jurado " << listaActas[opcion].getJuradoDos() << ": ";
-            cin >> calificacionDos;
-            cout << "Ingrese la observacion: ";
-            cin.ignore();
-            getline(cin, observacion);
-            pCriterio->setObservacion(observacion);
-            pCriterio->setCalificacionUno(calificacionUno);
-            pCriterio->setCalificacionDos(calificacionDos);
+    for (vector<Acta>::iterator pActa = listaActas.begin(); pActa != listaActas.end(); pActa++){
+        if (opcion == pActa->getNumeroActa()){
+            for (vector<Criterio>::iterator pCriterio = pActa->getCriterios().begin(); pCriterio != pActa->getCriterios().end(); pCriterio++){
+                cout << "Criterio: " << pCriterio->getTitulo() << "\n";
+                cout << "Ingrese la nota del jurado " << pActa->getJuradoUno() << ": ";
+                cin >> calificacionUno;
+                cout << "Ingrese la nota del jurado " << pActa->getJuradoDos() << ": ";
+                cin >> calificacionDos;
+                cout << "Ingrese la observacion: ";
+                cin.ignore();
+                getline(cin, observacion);
+                pCriterio->setObservacion(observacion);
+                pCriterio->setCalificacionUno(calificacionUno);
+                pCriterio->setCalificacionDos(calificacionDos);      
+                cout << "Acta Evaluada exitosamente\n";
+            }
+            cout << "La nota es de: " << pActa->getCalificacionFinal() << "El trabajo es: " << pActa->getEstado() << "\n"; 
+            cout << "\nDesea generar un reporte del acta?\n 1. Si \n2. No\nOPC:";
+            cin >> exportar;
+            if ( exportar == 1 ){
+                generarReporte(listaActas[opcion]);
+            } 
         }
-    listaActas[opcion].obtenerCalificacionFinal(); 
-    generarReporte(listaActas[opcion]);      
-    cout << "La nota es de: " << listaActas[opcion].getCalificacionFinal() << "El trabajo es: " << listaActas[opcion].getEstado() << "\n"; 
-    }
-    cout << "\nDesea generar un reporte del acta?\n 1. Si \n2. No\nOPC:";
-    cin >> exportar;
-    if ( exportar == 1 ){
-        generarReporte(listaActas[opcion]);
-    }
+    }     
 }
 
 void DireccionPos::verReprobadosyAprobados(){
