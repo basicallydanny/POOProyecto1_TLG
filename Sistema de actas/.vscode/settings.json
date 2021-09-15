@@ -10,6 +10,7 @@
         "functional": "cpp",
         "tuple": "cpp",
         "utility": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "sstream": "cpp"
     }
 }

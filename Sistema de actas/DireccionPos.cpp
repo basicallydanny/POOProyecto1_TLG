@@ -21,17 +21,17 @@ Personal DireccionPos::nuevoUsuario(){
     cin>>nombre;
     fflush(stdin);
     usuarioNuevo.setNombre(nombre);
-    cout<<"Que cargo tiene?\n1.Jurado\n2.Director\n3.Asistente";
+    cout<<"Que cargo tiene?\n1.Jurado\n2.Director\n3.Asistente\n";
     cin>>cargo;
     switch (cargo){
     case 1:
-        usuarioNuevo.setCargo("jurado");
+        usuarioNuevo.setCargo("Jurado");
         break;
     case 2:
-        usuarioNuevo.setCargo("director");
+        usuarioNuevo.setCargo("Director");
         break;
     case 3:
-        usuarioNuevo.setCargo("asistente");
+        usuarioNuevo.setCargo("Asistente");
         break;
     default:
         cout<<"Entrada no valida\n";
@@ -49,9 +49,10 @@ void DireccionPos::loginUsuario(string user){
     string loginID = "noValido";
 
     for (map<int,Personal>::iterator pPersonal = personalAdmin.begin();
-		 pPersonal != personalAdmin.end(); pPersonal++){
-        if ( user == pPersonal->second.getNombre() )
-        loginID = pPersonal->second.getCargo();
+		pPersonal != personalAdmin.end(); pPersonal++){
+        if ( cadenaAMinuscula(user) == cadenaAMinuscula(pPersonal->second.getNombre()) ){
+            loginID = pPersonal->second.getCargo();
+        }
 	}
 
     int opc = convert(loginID);
@@ -64,7 +65,7 @@ void DireccionPos::loginUsuario(string user){
     case director:
         mostrarMenuDirector(); break;
     default:
-        cout << "Usuario no valido"; break;
+        cout << "Usuario no valido\n"; break;
     }
 }
 
@@ -93,7 +94,7 @@ void DireccionPos::mostrarMenuAsistente(){
 void DireccionPos::mostrarMenuJurado(){
     int opc;
      do{
-         cout << "\n\n MENU JURADO \n"
+         cout << "\n MENU JURADO \n"
          << "1. Evaluar Tesis de Maestria\n"
          << "2. Ver Tesis Aprobadas y Reprobadas\n"
          << "o. EXIT\n"
@@ -116,7 +117,7 @@ void DireccionPos::mostrarMenuJurado(){
 void DireccionPos::mostrarMenuDirector(){
     int opc;
      do{
-         cout << "\n\n MENU DIRECTOR \n"
+         cout << "\n MENU DIRECTOR \n"
          << "1. Ver Resumen de Actas\n"
          << "2. Ver Criterios Actuales\n"
          << "3. Editar Criterios Actuales\n"
@@ -235,13 +236,20 @@ void DireccionPos::editarCriterios(){
     VerCriterio();
     cout << "Que criterio desea editar: ";
     cin >> opcion;
-    cout << "Nuevo Titualo: ";
-    cin.ignore();
-    getline(cin, titulo);
-    cout << "nueva ponderacion: ";
-    cin >> ponderacion;
-    criterios[opcion].setTitulo(titulo);
-    criterios[opcion].setPonderado(ponderacion);
+    if (opcion < 1 || opcion > criterios.size()){
+        return;   
+    }
+    else{
+        cout << "Nuevo Titulo: ";
+        cin.ignore();
+        getline(cin, titulo);
+        cout << "nueva ponderacion: ";
+        cin >> ponderacion;
+        criterios[opcion - 1].setTitulo(titulo);
+        criterios[opcion - 1].setPonderado(ponderacion);
+    }
+    
+    
 }
 
 void DireccionPos::newCriterio(){
@@ -367,4 +375,12 @@ void DireccionPos::verReprobadosyAprobados(){
             pActa->mostrarActa();
         }
     }
+}
+
+string DireccionPos::cadenaAMinuscula(string cadena){
+    string cadenaMinuscula;
+    for (int i = 0; i < cadena.size(); i++){
+        cadenaMinuscula.push_back(tolower(cadena[i]));
+    }
+    return cadenaMinuscula;
 }

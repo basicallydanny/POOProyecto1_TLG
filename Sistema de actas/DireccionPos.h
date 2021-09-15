@@ -46,6 +46,7 @@ public:
     void generarReporte(Acta acta);
     void evaluarActa();
     void verReprobadosyAprobados();
+    string cadenaAMinuscula(string cadena);
 };
 
 #endif
