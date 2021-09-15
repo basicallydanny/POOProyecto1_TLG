@@ -15,7 +15,7 @@ void View::mostrarMenuGeneral(){
         std::cin >> opc;
         switch (opc){
         case 1:
-
+            archivo.open("archivo.txt", ios::out);
             cout<<"Creacion de usuario jurado:\n";
             sistema.insertUsuario(sistema.nuevoUsuario());
             cout<<"Creacion de usuario asistente:\n";
@@ -25,8 +25,6 @@ void View::mostrarMenuGeneral(){
             cout<<"Ingrese el nombre del usuario que ingresara: \n";
             cin>>usuarioA;
             sistema.loginUsuario(usuarioA);
-
-            archivo.open("archivo.txt", ios::app);
             archivo.write((char*)&sistema, sizeof(sistema));
             archivo.close();
         break;
@@ -39,7 +37,7 @@ void View::mostrarMenuGeneral(){
             cin>>usuarioA;
             sistema.loginUsuario(usuarioA);
 
-            archivo.open("archivo.txt", ios::trunc);
+            archivo.open("archivo.txt", ios::out);
             archivo.write((char*)&sistema, sizeof(sistema));
             archivo.close();
         break;
