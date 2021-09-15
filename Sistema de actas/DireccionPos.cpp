@@ -95,7 +95,7 @@ void DireccionPos::mostrarMenuJurado(){
          cout << "\n MENU JURADO \n"
          << "1. Evaluar Tesis de Maestria\n"
          << "2. Ver Tesis Aprobadas y Reprobadas\n"
-         << "o. EXIT\n"
+         << "0. EXIT\n"
          << "OPC:";
          cin >> opc; cout << "\n ";
          switch(opc){
